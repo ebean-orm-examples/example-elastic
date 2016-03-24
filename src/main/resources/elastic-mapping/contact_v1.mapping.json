@@ -1,0 +1,22 @@
+{
+  "mappings" : {
+    "contact" : {
+      "properties" : {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "phone": { "type": "string" },
+        "mobile": { "type": "string" },
+        "email": { "type": "string" },
+        "customer" : {
+          "properties" : {
+            "id": { "type": "long" },
+            "name": { "type": "string" }
+          }
+        },
+        "whenCreated": { "type": "date" },
+        "whenModified": { "type": "date" },
+        "version": { "type": "long" }
+      }
+    }
+  }
+}
