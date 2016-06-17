@@ -1,9 +1,9 @@
 package org.example.domain;
 
-import org.example.domain.finder.CountryFinder;
-import com.avaje.ebean.annotation.CacheStrategy;
-import com.avaje.ebean.annotation.CacheTuning;
+import com.avaje.ebean.annotation.Cache;
+import com.avaje.ebean.annotation.DocSortable;
 import com.avaje.ebean.annotation.DocStore;
+import org.example.domain.finder.CountryFinder;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +14,7 @@ import javax.validation.constraints.Size;
  * Country entity bean.
  */
 @DocStore
-@CacheStrategy(readOnly = true)
-@CacheTuning(maxSize = 500)
+@Cache
 @Entity
 @Table(name = "o_country")
 public class Country {
@@ -26,11 +25,12 @@ public class Country {
   @Size(max = 2)
   String code;
 
+  @DocSortable
   @Size(max = 60)
   String name;
 
   public String toString() {
-    return code;
+    return code + ": " + name;
   }
 
   public String getCode() {

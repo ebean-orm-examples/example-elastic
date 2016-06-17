@@ -3,7 +3,7 @@ package org.example.domain;
 import org.example.domain.finder.CustomerFinder;
 import com.avaje.ebean.annotation.DbEnumValue;
 import com.avaje.ebean.annotation.DocStore;
-import com.avaje.ebean.annotation.DocStoreEmbedded;
+import com.avaje.ebean.annotation.DocEmbedded;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -54,11 +54,11 @@ public class Customer extends BasicDomain {
 
   Date anniversary;
 
-  @DocStoreEmbedded(doc = "*,country(*)")
+  @DocEmbedded(doc = "*,country(*)")
   @ManyToOne(cascade = CascadeType.ALL)
   Address billingAddress;
 
-  @DocStoreEmbedded(doc = "*,country(*)")
+  @DocEmbedded(doc = "*,country(*)")
   @ManyToOne(cascade = CascadeType.ALL)
   Address shippingAddress;
 

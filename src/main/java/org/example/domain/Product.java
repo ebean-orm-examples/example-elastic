@@ -21,16 +21,11 @@ public class Product extends BasicDomain {
 
   public static final ProductFinder find = new ProductFinder();
 
-//  public static QProduct where() {
-//    return new QProduct();
-//  }
-
   @DocCode
   @Size(max = 20)
   String sku;
 
   @DocSortable
-  @DocProperty()
   String name;
 
   public String getSku() {

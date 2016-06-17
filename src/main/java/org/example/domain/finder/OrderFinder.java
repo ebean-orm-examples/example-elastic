@@ -28,7 +28,7 @@ public class OrderFinder extends Finder<Long,Order> {
   }
 
   /**
-   * Start a new typed query against document store.
+   * Start a new text query.
    */
   public QOrder text() {
     return new QOrder(db()).text();

@@ -11,13 +11,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeedDbData {
+class SeedDbData {
 
   private static boolean runOnce;
 
-  private static EbeanServer server = Ebean.getServer(null);
+  private static EbeanServer server = Ebean.getDefaultServer();
 
-  public static void indexAll() {
+  static void indexAll() {
+
     DocumentStore documentStore = server.docStore();
     documentStore.indexAll(Country.class);
     documentStore.indexAll(Product.class);
@@ -26,7 +27,7 @@ public class SeedDbData {
     documentStore.indexAll(Order.class);
   }
 
-  public static synchronized void reset(boolean updateDocStore) {
+  static synchronized void reset(boolean updateDocStore) {
 
     if (runOnce) {
       return;
@@ -171,7 +172,7 @@ public class SeedDbData {
     return createCustomer(name, "1 Banana St", "P.O.Box 1234",  null);
   }
 
-  public static Customer createCustomer(String name, String shippingStreet, String billingStreet, String annDate) {
+  private static Customer createCustomer(String name, String shippingStreet, String billingStreet, String annDate) {
 
     Customer c = new Customer();
     c.setName(name);
@@ -217,7 +218,7 @@ public class SeedDbData {
     order.setShipDate(LocalDate.now());
     order.setCustomer(customer);
 
-    List<OrderDetail> details = new ArrayList<OrderDetail>();
+    List<OrderDetail> details = new ArrayList<>();
     details.add(new OrderDetail(product1, 5, 10.50));
     details.add(new OrderDetail(product2, 3, 1.10));
     details.add(new OrderDetail(product3, 1, 2.00));
@@ -240,7 +241,7 @@ public class SeedDbData {
     order.setStatus(Order.Status.SHIPPED);
     order.setCustomer(customer);
 
-    List<OrderDetail> details = new ArrayList<OrderDetail>();
+    List<OrderDetail> details = new ArrayList<>();
     details.add(new OrderDetail(product1, 4, 10.50));
     order.setDetails(details);
 
@@ -260,7 +261,7 @@ public class SeedDbData {
     order.setStatus(Order.Status.COMPLETE);
     order.setCustomer(customer);
 
-    List<OrderDetail> details = new ArrayList<OrderDetail>();
+    List<OrderDetail> details = new ArrayList<>();
     details.add(new OrderDetail(product1, 3, 10.50));
     details.add(new OrderDetail(product3, 40, 2.10));
     details.add(new OrderDetail(product1, 5, 10.00));

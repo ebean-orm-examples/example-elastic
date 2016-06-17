@@ -1,7 +1,7 @@
 package org.example.domain;
 
 import org.example.domain.finder.OrderDetailFinder;
-import com.avaje.ebean.annotation.DocStoreEmbedded;
+import com.avaje.ebean.annotation.DocEmbedded;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -26,7 +26,7 @@ public class OrderDetail extends BasicDomain {
   Double unitPrice;
 
   @ManyToOne
-  @DocStoreEmbedded(doc = "id,name,sku")
+  @DocEmbedded(doc = "id,name,sku")
   Product product;
 
 

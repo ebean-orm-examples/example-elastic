@@ -19,7 +19,7 @@
                 "country" : {
                   "properties" : {
                     "code": { "type": "string", "index": "not_analyzed" },
-                    "name": { "type": "string" }
+                    "name": { "type": "string", "fields": { "raw": { "type": "string", "index": "not_analyzed" } } }
                   }
                 },
                 "whenCreated": { "type": "date" },
@@ -39,7 +39,8 @@
             "product" : {
               "properties" : {
                 "id": { "type": "long" },
-                "sku": { "type": "string", "fields": { "raw": { "type": "string", "index": "not_analyzed" } } }
+                "sku": { "type": "string", "index": "not_analyzed" },
+                "name": { "type": "string", "fields": { "raw": { "type": "string", "index": "not_analyzed" } } }
               }
             },
             "whenCreated": { "type": "date" },

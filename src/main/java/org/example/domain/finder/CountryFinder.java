@@ -4,6 +4,8 @@ import com.avaje.ebean.Finder;
 import org.example.domain.Country;
 import org.example.domain.query.QCountry;
 
+import java.util.List;
+
 public class CountryFinder extends Finder<String,Country> {
 
   /**
@@ -25,5 +27,15 @@ public class CountryFinder extends Finder<String,Country> {
    */
   protected QCountry where() {
      return new QCountry(db());
+  }
+
+  public List<Country> docStoreAll() {
+
+    return where()
+        .setUseDocStore(true)
+        .select("code")
+        .order()
+          .name.asc()
+        .findList();
   }
 }

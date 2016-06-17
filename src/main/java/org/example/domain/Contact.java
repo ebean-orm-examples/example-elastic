@@ -1,9 +1,9 @@
 package org.example.domain;
 
 import org.example.domain.finder.ContactFinder;
-import com.avaje.ebean.annotation.CacheStrategy;
+import com.avaje.ebean.annotation.Cache;
 import com.avaje.ebean.annotation.DocStore;
-import com.avaje.ebean.annotation.DocStoreEmbedded;
+import com.avaje.ebean.annotation.DocEmbedded;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @DocStore
 @Entity
-@CacheStrategy(naturalKey = "email")
+@Cache(naturalKey = "email")
 public class Contact extends BasicDomain {
 
   public static final ContactFinder find = new ContactFinder();
@@ -24,7 +24,7 @@ public class Contact extends BasicDomain {
   String mobile;
   String email;
 
-  @DocStoreEmbedded(doc = "id,name")
+  @DocEmbedded(doc = "id,name")
   @ManyToOne(optional = false)
   Customer customer;
 
