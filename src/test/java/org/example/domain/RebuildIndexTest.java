@@ -5,11 +5,11 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
 import org.junit.Test;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class RebuildIndexTest {
 
+  /**
+   * Drop and recreate the indexes and populate them.
+   */
   @Test
   public void test() {
 
@@ -18,20 +18,20 @@ public class RebuildIndexTest {
 
     EbeanServer server = Ebean.getDefaultServer();
 
-    Map<String,Object> settings = new LinkedHashMap<>();
-    settings.put("refresh_interval", "-1");
-
     DocumentStore documentStore = server.docStore();
-    documentStore.indexSettings("order", settings);
-
     documentStore.indexAll(Country.class);
     documentStore.indexAll(Product.class);
-    documentStore.indexAll(Customer.class);
     documentStore.indexAll(Contact.class);
+    documentStore.indexAll(Customer.class);
     documentStore.indexAll(Order.class);
 
-    settings.put("refresh_interval", "1s");
-    documentStore.indexSettings("order", settings);
+
+//    Map<String,Object> settings = new LinkedHashMap<>();
+//    settings.put("refresh_interval", "-1");
+//    documentStore.indexSettings("order", settings);
+//
+//    settings.put("refresh_interval", "1s");
+//    documentStore.indexSettings("order", settings);
   }
 
 }

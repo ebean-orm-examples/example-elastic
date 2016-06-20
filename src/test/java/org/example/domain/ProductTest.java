@@ -16,10 +16,27 @@ import static org.example.domain.Order.Status.SHIPPED;
 public class ProductTest {
 
   @Test
-  public void findAndUpdate() {
-    SeedDbData.reset(false);
-    SeedDbData.indexAll();
+  public void findBySku() {
+
+    Product.find.where()
+        .sku.equalTo("C002")
+        .setUseDocStore(true)
+        .order()
+        .name.asc()
+        .findList();
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   @Test

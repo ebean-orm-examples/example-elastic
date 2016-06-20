@@ -1,14 +1,29 @@
 {
-  "size": 100,
-  "sort": [ { "orderDate": { "order": "desc" } } ],
   "query": {
     "filtered": {
       "filter": {
-        "bool": {
-          "must": [
-            { "terms": { "status": [ "NEW" ] } },
-            { "range": { "orderDate": { "gt": 1450263600000 } } }
-          ]
+        "nested": {
+          "path": "details",
+          "filter": {
+            "bool": {
+              "must": [
+                {
+                  "range": {
+                    "details.orderQty": {
+                      "gt": 1
+                    }
+                  }
+                },
+                {
+                  "range": {
+                    "details.unitPrice": {
+                      "gt": 1
+                    }
+                  }
+                }
+              ]
+            }
+          }
         }
       }
     }
