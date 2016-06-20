@@ -32,4 +32,18 @@ public class OrderTest {
 //    List<OrderDetail> details;
 
   }
+
+
+  @Test
+  public void findNestedFilter() {
+
+    List<Order> orders = Order.find.where()
+        .customer.status.eq(Customer.Status.NEW)
+        .details.orderQty.greaterThan(4)
+        .details.unitPrice.greaterThan(3d)
+        .setUseDocStore(true)
+        .findList();
+
+    System.out.println("Orders: " + orders);
+  }
 }

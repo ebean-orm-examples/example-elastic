@@ -15,8 +15,7 @@ public class ContactTest {
         .findList();
 
 
-
-    MultiMatch multiMatch = new MultiMatch("firstName", "lastName","customer.name")
+    MultiMatch multiMatch = new MultiMatch("firstName", "lastName", "customer.name")
         .type(MultiMatch.Type.CROSS_FIELDS)
         .opAnd();
 

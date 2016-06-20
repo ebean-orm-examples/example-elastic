@@ -1,9 +1,9 @@
 package org.example.domain;
 
-import org.example.domain.finder.CustomerFinder;
 import com.avaje.ebean.annotation.DbEnumValue;
-import com.avaje.ebean.annotation.DocStore;
 import com.avaje.ebean.annotation.DocEmbedded;
+import com.avaje.ebean.annotation.DocStore;
+import org.example.domain.finder.CustomerFinder;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,25 +57,19 @@ public class Customer extends BasicDomain {
   @ManyToOne(cascade = CascadeType.ALL)
   Address billingAddress;
 
-  @DocEmbedded(doc = "*,country(*)")
+  //@DocEmbedded(doc = "*,country(*)")
   @ManyToOne(cascade = CascadeType.ALL)
   Address shippingAddress;
 
   @OneToMany(mappedBy = "customer")
   List<Order> orders;
 
+  //@DocEmbedded
   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
   List<Contact> contacts;
 
   public String toString() {
     return id + " " + status + " " + name;
-  }
-
-  public void addContact(Contact contact) {
-    if (contacts == null) {
-      contacts = new ArrayList<Contact>();
-    }
-    contacts.add(contact);
   }
 
   public Status getStatus() {

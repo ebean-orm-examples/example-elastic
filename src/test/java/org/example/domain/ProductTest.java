@@ -18,12 +18,12 @@ public class ProductTest {
   @Test
   public void findBySku() {
 
-    Product.find.where()
+    Product c002 = Product.find.where()
         .sku.equalTo("C002")
         .setUseDocStore(true)
-        .order()
-        .name.asc()
-        .findList();
+        .findUnique();
+
+    System.out.println("got: " + c002);
   }
 
 

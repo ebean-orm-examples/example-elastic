@@ -23,23 +23,6 @@
             "version": { "type": "long" }
           }
         },
-        "shippingAddress" : {
-          "properties" : {
-            "id": { "type": "long" },
-            "line1": { "type": "string" },
-            "line2": { "type": "string" },
-            "city": { "type": "string" },
-            "country" : {
-              "properties" : {
-                "code": { "type": "string", "index": "not_analyzed" },
-                "name": { "type": "string", "fields": { "raw": { "type": "string", "index": "not_analyzed" } } }
-              }
-            },
-            "whenCreated": { "type": "date" },
-            "whenModified": { "type": "date" },
-            "version": { "type": "long" }
-          }
-        },
         "whenCreated": { "type": "date" },
         "whenModified": { "type": "date" },
         "version": { "type": "long" }

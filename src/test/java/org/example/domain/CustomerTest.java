@@ -15,6 +15,7 @@ public class CustomerTest {
         .order()
           .name.desc()
         .setUseDocStore(true)
+        //.setDisableLazyLoading(true)
         .findList();
 
     Customer first = customers.get(0);
@@ -33,6 +34,9 @@ public class CustomerTest {
 
   @Test
   public void findNoContacts() {
+
+    // IF contacts is embedded into Customer
+    // then ...
 
     List<Customer> customers = Customer.find.where()
         .contacts.isEmpty()

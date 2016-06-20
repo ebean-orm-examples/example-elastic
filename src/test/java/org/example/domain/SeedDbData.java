@@ -110,9 +110,9 @@ class SeedDbData {
 
 
     Customer cust1 = insertCustomer("Rob");
-    cust1.addContact(new Contact("Jim", "Cricket"));
-    cust1.addContact(new Contact("Barny", "Rubble"));
-    cust1.addContact(new Contact("Bugs", "Bunny"));
+    cust1.getContacts().add(new Contact("Jim", "Cricket"));
+    cust1.getContacts().add(new Contact("Barny", "Rubble"));
+    cust1.getContacts().add(new Contact("Bugs", "Bunny"));
     Ebean.save(cust1);
 
     Customer cust2 = insertCustomerNoAddress("Cust NoAddress");
@@ -133,8 +133,8 @@ class SeedDbData {
     Customer c = createCustomer(name, "12 Apple St", "West Coast Rd", "2009-08-31");
     c.setStatus(Customer.Status.ACTIVE);
 
-    c.addContact(createContact("Fiona", "Black"));
-    c.addContact(createContact("Tracy", "Red"));
+    c.getContacts().add(createContact("Fiona", "Black"));
+    c.getContacts().add(createContact("Tracy", "Red"));
 
     Ebean.save(c);
     return c;
@@ -162,7 +162,7 @@ class SeedDbData {
     Customer c = new Customer();
     c.setName(name);
     c.setStatus(Customer.Status.NEW);
-    c.addContact(createContact("Jack", "Black"));
+    c.getContacts().add(createContact("Jack", "Black"));
 
     Ebean.save(c);
     return c;

@@ -1,11 +1,9 @@
 package org.example.domain;
 
-import com.avaje.ebean.annotation.DocProperty;
-import org.example.domain.finder.ProductFinder;
 import com.avaje.ebean.annotation.DocCode;
 import com.avaje.ebean.annotation.DocSortable;
 import com.avaje.ebean.annotation.DocStore;
-import org.example.domain.query.QProduct;
+import org.example.domain.finder.ProductFinder;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -27,6 +25,10 @@ public class Product extends BasicDomain {
 
   @DocSortable
   String name;
+
+  public String toString() {
+    return "id:" + id + " sku:" + sku + " name:" + name;
+  }
 
   public String getSku() {
     return sku;
