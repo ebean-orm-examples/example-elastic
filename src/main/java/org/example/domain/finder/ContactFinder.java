@@ -23,7 +23,14 @@ public class ContactFinder extends Finder<Long,Contact> {
   /**
    * Start a new typed query.
    */
-  protected QContact where() {
+  public QContact where() {
      return new QContact(db());
+  }
+
+  /**
+   * Start a new text query.
+   */
+  public QContact text() {
+    return new QContact(db()).text();
   }
 }
