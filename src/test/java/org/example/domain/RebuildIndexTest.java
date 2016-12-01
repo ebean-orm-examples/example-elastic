@@ -18,6 +18,8 @@ public class RebuildIndexTest {
 
     EbeanServer server = Ebean.getDefaultServer();
 
+    SeedDbData.reset(true);
+
     DocumentStore documentStore = server.docStore();
     documentStore.indexAll(Country.class);
     documentStore.indexAll(Product.class);

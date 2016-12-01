@@ -1,6 +1,6 @@
 package main;
 
-import com.avaje.ebean.config.dbplatform.DbPlatformName;
+import com.avaje.ebean.config.Platform;
 import com.avaje.ebean.dbmigration.DbMigration;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class MainDbMigration {
     //System.setProperty("ddl.migration.pendingDrop", "1.1");
 
     DbMigration dbMigration = new DbMigration();
-    dbMigration.setPlatform(DbPlatformName.POSTGRES);
+    dbMigration.setPlatform(Platform.POSTGRES);
 
     // generate the migration xml and ddl
     dbMigration.generateMigration();
